@@ -1,0 +1,43 @@
+{% extends 'master.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+    Sample Company
+{% endblock title %}
+
+{% block content %}
+    <div class="container mt-3">
+        <h1>Application</h1>
+        <hr>
+        <p>Name : {{name}}</p>
+        <p>Email : {{email}}</p>
+        <p>Phone : {{phone}}</p>
+
+        {% if fileType == 'jpg' or fileType == 'png' %}
+            <p>
+                <img src="{{fileUrl}}" alt="" class="img-fluid border">
+            </p>
+        {% elif fileType == 'pdf' %}
+            <p>
+                <a href={{fileUrl}} class="btn btn-info" target="_blank">View PDF File</a>
+            </p>
+            <p>
+                <embed
+                    src={{fileUrl}}
+                    type="application/pdf"
+                    frameBorder="0"
+                    scrolling="auto"
+                    height="500"
+                    width="100%"
+                ></embed>
+                
+            </p>
+        {% else %}
+        <p>
+            <a href={{fileUrl}} class="btn btn-info" target="_blank">View File</a>
+        </p>
+        {% endif %}
+            
+        
+    </div>
+{% endblock content %}

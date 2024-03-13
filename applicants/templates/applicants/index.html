@@ -1,18 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Weather Application">
-        <meta name="author" content="Shivateja Burle">
-        {% load static %}
-        <link rel="icon" type="image/png" href="{% static 'favicon.png' %}">
-        <title>Applicants App</title>
-        {% load bootstrap5 %}
-        {% bootstrap_css %}
-        {% bootstrap_javascript %}
-    </head>
-    <body>
-        <h1>Hello</h1>
-    </body>
-</html>
+{% extends 'master.html' %}
+
+{% block title %}
+    Sample Company
+{% endblock title %}
+
+{% block content %}
+    <div class="container mt-3">     
+        {% if not request.session.uid %}
+            <h1 class="text-secondary">Hello Guest</h1> <br>
+            <h2>Already have account please sign in otherwise please create your account.</h2> <br>
+            <button class="btn btn-primary" type="button"
+                onclick="window.location='{% url 'applicants:sign_up' %}'">Create an Account</button>
+        {% else %}            
+            <h1><span class="text-secondary">Welcome</span> <span class="text-primary">{{request.session.displayName}}</span></h1>
+            
+            {% if request.session.total_submissions == 0 %}
+                <br><h2>Please submit your application.</h2><br>
+                <button class="btn btn-primary" type="button"
+                    onclick="window.location='{% url 'applicants:submit_application' %}'">Submit Application</button>
+            {% else %}
+                <br><h2>You have already submitted your application.</h2><br>
+                <button class="btn btn-primary" type="button"
+                    onclick="window.location='{% url 'applicants:get_application' %}'">Check your Submission</button>
+            {% endif %}
+                
+        {% endif %}
+    </div>
+{% endblock content %}
+    

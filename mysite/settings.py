@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,6 +85,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# Firebase
+CONFIG={
+    'apiKey': os.environ.get("API_KEY"),
+    'authDomain': os.environ.get("AUTH_DOMAIN"),
+    'databaseURL': os.environ.get("DATABASE_URL"),
+    'projectId': os.environ.get("PROJECT_ID"),
+    'storageBucket': os.environ.get("STORAGE_BUCKET"),
+    'messagingSenderId': os.environ.get("MESSAGING_SENDER_ID"),
+    'appId': os.environ.get("APP_ID")
+};
 
 
 # Password validation

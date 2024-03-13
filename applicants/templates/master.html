@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Weather Application">
+        <meta name="author" content="Shivateja Burle">
+        {% load static %}
+        <link rel="icon" type="image/png" href="{% static 'favicon.png' %}">
+        <title>{% block title %}{% endblock %}</title>
+        {% load bootstrap5 %}
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        {% block navbar %}
+            {% include "menu.html" %}
+        {% endblock %}
+        <div class="container mt-3">
+            {% bootstrap_messages %}
+        </div>
+        {% block content %}
+        {% endblock %}     
+    </body>
+</html>
