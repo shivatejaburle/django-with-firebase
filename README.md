@@ -1,5 +1,16 @@
 # Django with Firebase
 
+Building a Seamless Django Application Integrated with Firebase: Empowering Users to Create Accounts, Log In with Username and Password, Log Out, Reset Passwords, and Effortlessly Store and Retrieve Data and Media Files (.jpg, .png, .pdf, .docx).
+
+## Functionality
+
+- Create an account
+- Log in via username & password
+- Log out
+- Reset password
+- Store and retrieve data from Firebase
+- Store and retrieve media (.jpg, .png, .pdf, .docx) from Firebase
+
 ## Setup Firebase
 
 ### Create Project
