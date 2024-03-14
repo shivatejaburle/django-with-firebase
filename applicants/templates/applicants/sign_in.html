@@ -1,0 +1,19 @@
+{% extends 'master.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+    Sample Company
+{% endblock title %}
+
+{% block content %}
+    <div class="container mt-3">
+        <h1>Login</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button class="btn btn-primary" type="submit">Login</button>
+            <button class="btn btn-secondary" type="button"
+                onclick="window.location='{% url 'applicants:reset_password' %}'">Forgot Password</button>
+        </form>
+    </div>
+{% endblock content %}

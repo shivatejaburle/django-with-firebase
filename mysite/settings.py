@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,6 +87,18 @@ DATABASES = {
 }
 
 
+# Firebase
+CONFIG={
+    'apiKey': os.environ.get("API_KEY"),
+    'authDomain': os.environ.get("AUTH_DOMAIN"),
+    'databaseURL': os.environ.get("DATABASE_URL"),
+    'projectId': os.environ.get("PROJECT_ID"),
+    'storageBucket': os.environ.get("STORAGE_BUCKET"),
+    'messagingSenderId': os.environ.get("MESSAGING_SENDER_ID"),
+    'appId': os.environ.get("APP_ID")
+};
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -116,6 +132,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+STATIC_ROOT = BASE_DIR / 'content'
 
 STATIC_URL = 'static/'
 
